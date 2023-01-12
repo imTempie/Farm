@@ -6,6 +6,7 @@ public class Main {
         System.out.println('\u000C'); // clear terminal window
         Crop crop = new Potato();
         manageCrop(crop);
+        Animal animal = new Quokka();
     }
 
     private void menu() {
