@@ -22,7 +22,7 @@ public abstract class Animal {
     }
 
     public String getReport() {
-        return "Type: " + type + ", Status: " + status + ", Weight: " + weight
+        return "Name: " + name + ", Type: " + type + ", Status: " + status + ", Weight: " + weight
                 + ", daysGrowing: " + daysGrowing + "\n" + getNeeds();
     }
 

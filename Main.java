@@ -1,12 +1,22 @@
+import java.lang.StackWalker.Option;
 import java.util.Scanner;
 
 public class Main {
 
     public Main() {
-        System.out.println('\u000C'); // clear terminal window
         Crop crop = new Potato();
-        manageCrop(crop);
         Animal animal = new Quokka();
+        System.out.println('\u000C'); // clear terminal window
+        showGrowables();
+        int option = getMenuChoice();
+        switch (option) {
+            case 1:
+                manageAnimal(animal);
+                break;
+            case 2:
+                manageCrop(crop);
+                break;
+        }
     }
 
     private void menu() {
@@ -15,6 +25,12 @@ public class Main {
         System.out.println("[2] Auto grow for 30 days");
         System.out.println("[3] Report Status");
         System.out.println("[4] Exit\n");
+    }
+
+    private void showGrowables() {
+        System.out.println("What would you like to grow?");
+        System.out.println("[1] Quokka");
+        System.out.println("[1] Potato");
     }
 
     private int getMenuChoice() {
@@ -40,7 +56,34 @@ public class Main {
     }
 
     private void manageCrop(Crop crop) {
-        System.out.println("\nThis is the crop management program");
+        System.out.println("\nThis is the Farm Management Program");
+        System.out.println();
+        boolean noExit = true;
+        while (noExit) {
+            menu();
+            int option = getMenuChoice();
+
+            switch (option) {
+                case 1:
+                    manualGrow(crop);
+                    System.out.println();
+                    break;
+                case 2:
+                    autoGrow(crop, 30);
+                    System.out.println();
+                    break;
+                case 3:
+                    System.out.println(crop.getReport());
+                    break;
+                case 4:
+                    noExit = false;
+                    break;
+            }
+        }
+    }
+
+    private void manageAnimal(Animal animal) {
+        System.out.println("\nThis is the Farm Management Program");
         System.out.println();
         boolean noExit = true;
         while (noExit) {

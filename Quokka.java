@@ -1,7 +1,7 @@
 public class Quokka extends Animal {
 
     public Quokka() {
-        super(1, 6, 6, name);
+        super(1, 6, 6, "Bob");
         type = "Quokka";
     }
 
@@ -21,15 +21,15 @@ public class Quokka extends Animal {
 
     public void updateStatus() {
         if (weight >= 15) {
-            status = "Jacket Potato";
+            status = "Old Quokka";
         } else if (weight >= 10) {
-            status = "Normal Potato";
+            status = "Mature Quokka";
         } else if (weight >= 5) {
-            status = "New Potato";
+            status = "Young Quokka";
         } else if (weight > 0) {
-            status = "Spudling";
+            status = "Tollder Quokka";
         } else {
-            status = "Spud";
+            status = "Baby Quokka";
         }
     }
 
