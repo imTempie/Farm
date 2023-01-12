@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Quokka
+comment1.params=
+comment1.target=Quokka()
+comment2.params=light\ water
+comment2.target=void\ grow(int,\ int)
+comment3.params=
+comment3.target=void\ updateStatus()
+numComments=4
