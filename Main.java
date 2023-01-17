@@ -3,17 +3,30 @@ import java.util.Scanner;
 public class Main {
 
     public Main() {
-        Crop crop = new Potato();
-        Animal animal = new Quokka();
+        Crop potato = new Potato();
+        Crop rice = new Rice();
+
+        Animal quokka = new Quokka();
+        Animal monkey = new Monkey();
+
         System.out.println('\u000C'); // clear terminal window
+
         showGrowables();
+
         int option = getMenuChoice();
+
         switch (option) {
             case 1:
-                manageAnimal(animal);
+                manageCrop(potato);
                 break;
             case 2:
-                manageCrop(crop);
+                manageCrop(rice);
+                break;
+            case 3:
+                manageAnimal(quokka);
+                break;
+            case 4:
+                manageAnimal(monkey);
                 break;
         }
     }
@@ -28,8 +41,10 @@ public class Main {
 
     private void showGrowables() {
         System.out.println("What would you like to grow?");
-        System.out.println("[1] Quokka");
-        System.out.println("[2] Potato");
+        System.out.println("[1] Potato");
+        System.out.println("[2] Rice");
+        System.out.println("[3] Quokka");
+        System.out.println("[4] Monkey");
     }
 
     private int getMenuChoice() {

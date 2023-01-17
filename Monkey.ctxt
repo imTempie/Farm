@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Monkey
+comment1.params=
+comment1.target=Monkey()
+comment2.params=food\ water
+comment2.target=void\ grow(int,\ int)
+comment3.params=
+comment3.target=void\ updateStatus()
+numComments=4
