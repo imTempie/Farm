@@ -1,4 +1,3 @@
-import java.lang.StackWalker.Option;
 import java.util.Scanner;
 
 public class Main {
@@ -35,24 +34,25 @@ public class Main {
 
     private int getMenuChoice() {
         boolean optionValid = false;
-        Scanner scanner = new Scanner(System.in);
-        int choice = 0;
-        while (!optionValid) {
-            System.out.println("Option Selected:");
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
-                if (choice >= 0 && choice <= 4) {
-                    optionValid = true;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int choice = 0;
+            while (!optionValid) {
+                System.out.println("Option Selected:");
+                if (scanner.hasNextInt()) {
+                    choice = scanner.nextInt();
+                    if (choice >= 0 && choice <= 4) {
+                        optionValid = true;
+                    } else {
+                        System.out.println("Please enter a valid option");
+                    }
                 } else {
                     System.out.println("Please enter a valid option");
                 }
-            } else {
-                System.out.println("Please enter a valid option");
-            }
 
-            scanner.nextLine();
+                scanner.nextLine();
+            }
+            return choice;
         }
-        return choice;
     }
 
     private void manageCrop(Crop crop) {
@@ -111,80 +111,82 @@ public class Main {
 
     private void manualGrow(Crop crop) {
         boolean valid = false;
-        Scanner scanner = new Scanner(System.in);
-        int water = 0;
-        int light = 0;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int water = 0;
+            int light = 0;
 
-        while (!valid) {
-            System.out.println("Please enter a light value (1-10): ");
-            if (scanner.hasNextInt()) {
-                light = scanner.nextInt();
-                if (light >= 1 && light <= 10) {
-                    valid = true;
+            while (!valid) {
+                System.out.println("Please enter a light value (1-10): ");
+                if (scanner.hasNextInt()) {
+                    light = scanner.nextInt();
+                    if (light >= 1 && light <= 10) {
+                        valid = true;
+                    } else {
+                        System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    }
                 } else {
-                    System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    System.out.println("Value entered not valid, please enter a value between (1-10)");
                 }
-            } else {
-                System.out.println("Value entered not valid, please enter a value between (1-10)");
+                scanner.nextLine(); // clearing scanner
             }
-            scanner.nextLine(); // clearing scanner
-        }
 
-        valid = false;
-        while (!valid) {
-            System.out.println("Please enter a water value (1-10): ");
-            if (scanner.hasNextInt()) {
-                water = scanner.nextInt();
-                if (water >= 1 && water <= 10) {
-                    valid = true;
+            valid = false;
+            while (!valid) {
+                System.out.println("Please enter a water value (1-10): ");
+                if (scanner.hasNextInt()) {
+                    water = scanner.nextInt();
+                    if (water >= 1 && water <= 10) {
+                        valid = true;
+                    } else {
+                        System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    }
                 } else {
-                    System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    System.out.println("Value entered not valid, please enter a value between (1-10)");
                 }
-            } else {
-                System.out.println("Value entered not valid, please enter a value between (1-10)");
+                scanner.nextLine(); // clearing scanner
             }
-            scanner.nextLine(); // clearing scanner
+            crop.grow(light, water);
         }
-        crop.grow(light, water);
     }
 
     private void manualGrowAnimal(Animal animal) {
         boolean valid = false;
-        Scanner scanner = new Scanner(System.in);
-        int water = 0;
-        int food = 0;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int water = 0;
+            int food = 0;
 
-        while (!valid) {
-            System.out.println("Please enter a food value (1-10): ");
-            if (scanner.hasNextInt()) {
-                food = scanner.nextInt();
-                if (food >= 1 && food <= 10) {
-                    valid = true;
+            while (!valid) {
+                System.out.println("Please enter a food value (1-10): ");
+                if (scanner.hasNextInt()) {
+                    food = scanner.nextInt();
+                    if (food >= 1 && food <= 10) {
+                        valid = true;
+                    } else {
+                        System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    }
                 } else {
-                    System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    System.out.println("Value entered not valid, please enter a value between (1-10)");
                 }
-            } else {
-                System.out.println("Value entered not valid, please enter a value between (1-10)");
+                scanner.nextLine(); // clearing scanner
             }
-            scanner.nextLine(); // clearing scanner
-        }
 
-        valid = false;
-        while (!valid) {
-            System.out.println("Please enter a water value (1-10): ");
-            if (scanner.hasNextInt()) {
-                water = scanner.nextInt();
-                if (water >= 1 && water <= 10) {
-                    valid = true;
+            valid = false;
+            while (!valid) {
+                System.out.println("Please enter a water value (1-10): ");
+                if (scanner.hasNextInt()) {
+                    water = scanner.nextInt();
+                    if (water >= 1 && water <= 10) {
+                        valid = true;
+                    } else {
+                        System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    }
                 } else {
-                    System.out.println("Value entered not valid = please enter a value between (1-10)");
+                    System.out.println("Value entered not valid, please enter a value between (1-10)");
                 }
-            } else {
-                System.out.println("Value entered not valid, please enter a value between (1-10)");
+                scanner.nextLine(); // clearing scanner
             }
-            scanner.nextLine(); // clearing scanner
+            animal.grow(food, water);
         }
-        animal.grow(food, water);
     }
 
     private void autoGrow(Crop crop, int days) {
