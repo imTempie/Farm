@@ -1,1 +1,7 @@
-<h1>Using BlueJ IDE, and VS Code</h1>
+# Farm
+
+Simple overview of use/purpose.
+
+## Description
+
+Grow animals and crops! Coded in BlueJ and VS Code.
