@@ -6,7 +6,7 @@ public abstract class Animal {
     protected int waterNeed;
     protected String status;
     protected String type;
-    protected static String name;
+    protected String name;
 
     public Animal(double growthRate, int foodNeed, int waterNeed, String name) {
         this.growthRate = growthRate;
