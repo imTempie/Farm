@@ -1,7 +1,11 @@
 public class Quokka extends Animal {
 
+    static String[] nameList = { "Bob", "John", "Jack", "Will", "Astrid", "Fiona", "Sarah", "JJ", "Pope",
+            "Angry Little Quokka" };
+
     public Quokka() {
-        super(1, 6, 6, "Bob");
+
+        super(1, 6, 6, nameList[((int) (Math.random() * 10) + 1)]);
         type = "Quokka";
     }
 
